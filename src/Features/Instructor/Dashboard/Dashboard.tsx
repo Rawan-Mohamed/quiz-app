@@ -39,7 +39,7 @@ const Dashboard = () => {
   return (
     <>
       {userRole && (
-        <div className="container flex flex-col sm:flex-row md:flex-row lg:flex-row gap-x-5 sm:gap-y-5 justify-center">
+        <div className="container flex flex-col sm:flex-row md:flex-row lg:flex-row gap-x-5 sm:gap-y-5 justify-around">
           <div className={styles["left"]}>
             <div className={styles["details"]}>
               <h2 className="font-medium">Upcoming 5 quizzes</h2>
