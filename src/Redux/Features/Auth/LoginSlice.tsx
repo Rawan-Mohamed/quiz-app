@@ -10,6 +10,7 @@ interface LoginState {
     errors: string | null;
     islogged: null;
     success: boolean; // Add this line if not already present
+    firstName: string | null; // Add this line
 
 
 }
@@ -21,7 +22,8 @@ const initialState: LoginState = {
     loading: false,
     errors: null,
     islogged: null,
-    success: true // Add this line if not already present
+    success: true ,// Add this line if not already present
+    firstName: null, // Add this line
 
 };
 
@@ -33,12 +35,14 @@ const loginUser = createAsyncThunk(
             localStorage.setItem("userRole", response?.data?.data?.profile.role);
             localStorage.setItem("authToken", response?.data?.data?.accessToken);
             localStorage.setItem("userId", response?.data?.data?.profile?._id);
+            localStorage.setItem("firstName", response?.data?.data?.profile?.first_name);
+
 
             toast.success(response.data.message, {
                 autoClose: 2000,
                 theme: "colored",
             });
-            return response?.data?.data?.profile?.role;
+            return response?.data?.data?.profile.role;
         } catch (error) {
             console.log(error);
 
@@ -69,10 +73,14 @@ const loginSlice = createSlice({
             state.loading = true;
         });
         builder.addCase(loginUser.fulfilled, (state, action) => {
+            console.log(action.payload);  // Log the payload to inspect the structure
             state.role = action.payload;
             state.loading = false;
             state.islogged = action.payload
             state.success = true // login successful
+            state.firstName = action.payload === "Instructor" || action.payload === "Student"
+                ? localStorage.getItem("firstName")
+                : null;
         });
         builder.addCase(loginUser.rejected, (state, action) => {
             state.loading = false;

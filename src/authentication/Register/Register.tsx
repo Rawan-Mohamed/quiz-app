@@ -5,6 +5,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useCallback, useEffect } from "react";
 import { registerUser } from "../../Redux/Features/Auth/RegisterSlice";
+import signup from '../../assets/images/Vector.png'
+import signin from '../../assets/images/Vector1.png'
 
 const Register = () => {
 
@@ -44,7 +46,7 @@ const Register = () => {
           <Link to="/" className="signin w-1/2">
             <div className="content flex flex-col items-center text-8xl py-3 bg-stone-700 me-3 rounded-lg text-center border-4 ">
               <i>
-                <svg
+                {/* <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
@@ -57,7 +59,8 @@ const Register = () => {
                     strokeLinejoin="round"
                     d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"
                   />
-                </svg>
+                </svg> */}
+                  <img src={signin} alt="" />
               </i>
               <p className="text-base mt-2">Sign in</p>
             </div>
@@ -65,7 +68,8 @@ const Register = () => {
           <div className="signup w-1/2">
             <div className="content flex flex-col items-center text-8xl py-3 bg-stone-700 me-3 rounded-lg text-center border-4  border-lime-300">
               <i>
-                <svg
+              <img src={signup} alt="" />
+                {/* <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
@@ -78,7 +82,7 @@ const Register = () => {
                     strokeLinejoin="round"
                     d="M18 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0ZM3 19.235v-.11a6.375 6.375 0 0 1 12.75 0v.109A12.318 12.318 0 0 1 9.374 21c-2.331 0-4.512-.645-6.374-1.766Z"
                   />
-                </svg>
+                </svg> */}
               </i>
               <p className="text-base mt-2">Sign Up</p>
             </div>
@@ -86,7 +90,7 @@ const Register = () => {
           <div className="signup w-1/2"></div>
         </div>
 
-        <form onSubmit={handleSubmit(onSubmit)} className="w-full relative">
+        <form onSubmit={handleSubmit(onSubmit)} className="w-full relative pt-5">
           <div className="flex space-x-4">
             <div className="w-1/2 relative">
               <label htmlFor="firstName" className="text-white">
@@ -315,7 +319,7 @@ const Register = () => {
         </form>
       </div>
 
-      <div className="hidden md:flex w-1/2 items-center">
+      <div className="hidden md:flex w-1/2 items-center justify-around">
         <img src={bgAuth} alt="bg" className="w-4/5" />
       </div>
     </div>

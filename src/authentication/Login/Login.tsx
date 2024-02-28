@@ -7,6 +7,8 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { loginUser } from "../../Redux/Features/Auth/LoginSlice";
 import { useCallback, useEffect } from "react";
+import signup from '../../assets/images/signup-login.png'
+import signin from '../../assets/images/signin-login.png'
 
 const Login = () => {
 
@@ -35,8 +37,6 @@ const Login = () => {
 
   return (
     <>
-
-
       <div className="flex items-center justify-center min-h-screen bg-slate-950">
         <div className="w-full md:w-1/2 p-12 bg-slate-950 text-white">
           <img src={Logo} alt="Quizwiz" className="pb-10" />
@@ -48,7 +48,7 @@ const Login = () => {
             <div className="signin w-1/2">
               <div className="content flex flex-col items-center text-8xl py-3 bg-stone-700 me-3 rounded-lg text-center border-4 border-lime-300 ">
                 <i>
-
+                  {/*
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -65,7 +65,8 @@ const Login = () => {
 
                       d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"
                     />
-                  </svg>
+                  </svg> */}
+                  <img src={signin} alt="" />
                 </i>
 
                 <p className="text-base mt-2">Sign in</p>
@@ -74,27 +75,28 @@ const Login = () => {
             <Link to="/register" className="signup w-1/2">
               <div className="content flex flex-col items-center text-8xl py-3 bg-stone-700 me-3 rounded-lg text-center border-4  ">
                 <i>
-                  <svg
+                  {/* <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
                     strokeWidth={1.5}
                     stroke="currentColor"
-                    className="w-6 h-6"
+                    className="w-10 h-6"
                   >
                     <path
                       strokeLinecap="round"
                       strokeLinejoin="round"
                       d="M18 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0ZM3 19.235v-.11a6.375 6.375 0 0 1 12.75 0v.109A12.318 12.318 0 0 1 9.374 21c-2.331 0-4.512-.645-6.374-1.766Z"
                     />
-                  </svg>
+                  </svg> */}
+                  <img src={signup} alt="" />
                 </i>
                 <p className="text-base mt-2">Sign Up</p>
               </div>
             </Link>
             <div className="signup w-1/2"></div>
           </div>
-          <form onSubmit={handleSubmit(onSubmit)} className="w-full relative">
+          <form onSubmit={handleSubmit(onSubmit)} className="w-full relative pt-5">
             <label htmlFor="email" className="text-white">
               Registered email address
             </label>
@@ -196,16 +198,24 @@ const Login = () => {
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
               </button>
+
             </div>
-            <div className="form-group my-3 d-flex justify-content-between">
-              <Link
-                to='/forget-password'
-                className='text-white text-decoration-none'>Forgot Password?</Link>
+            <div className="form-group my-3 d-flex ">
+              Forgot Password?
+              <span className="text-[#C5D86D]">
+                <Link
+                  to='/forget-password'
+                >
+
+                  Click here
+                </Link>
+              </span>
+
             </div>
           </form>
         </div>
 
-        <div className="hidden md:flex w-1/2 items-center">
+        <div className="hidden md:flex w-1/2 items-center justify-around">
           <img src={bgAuth} alt="bg" className="w-4/5" />
 
         </div>

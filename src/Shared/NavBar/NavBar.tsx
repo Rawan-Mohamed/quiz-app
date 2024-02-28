@@ -7,6 +7,7 @@ import codeImg from '../../assets/images/codeImg.png'
 import { useDispatch, useSelector } from "react-redux";
 import { fetchGroups } from "../../Redux/Features/Instructor/Groups/GroupsSlice";
 import { fetchCreateQuizz } from "../../Redux/Features/Instructor/Quizzes/createQuizzesSlice";
+import { loginDataIslogged, loginUser } from "../../Redux/Features/Auth/LoginSlice";
 
 // import styles from './NavBar.module.css'
 const NavBar = () => {
@@ -17,6 +18,8 @@ const NavBar = () => {
   const dispatch = useDispatch();
   const groups = useSelector((state) => state.groupsSlice.data); // Assuming your slice is named GroupsData
   const userRole = useSelector((state) => state.users.role); // Assuming 'users' is the slice name where the user role is stored
+  const { firstName } = useSelector((state) => state.users || {});
+
 
   useEffect(() => {
     // dispatch(fetchQuizzesData());
@@ -24,6 +27,9 @@ const NavBar = () => {
     // dispatch(fetchcompletedQuizzes());
     dispatch(fetchGroups());
   }, [dispatch]);
+
+
+
 
   // ******* Modals***********
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -107,7 +113,11 @@ const NavBar = () => {
             <div className="relative group">
               <a href="#" className="hover:bg-orange-200 px-3 py-1
            hover:rounded-xl  flex items-center ">
-                {userRole} <i className="">
+                {userRole}  |
+                <span className="p-2">
+                  {firstName}
+                </span>
+                <i className="">
                   {/* <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
                     <path fillRule="evenodd" d="M12.53 16.28a.75.75 0 0 1-1.06 0l-7.5-7.5a.75.75 0 0 1 1.06-1.06L12 14.69l6.97-6.97a.75.75 0 1 1 1.06 1.06l-7.5 7.5Z" clipRule="evenodd" />
                   </svg> */}
